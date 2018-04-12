@@ -88,6 +88,7 @@
 	NSURL* baseUrl = [self.webView.request URL];
 #endif
        if([contentType isEqualToString:contentTypePDF]){
+		url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL* absoluteURL = [[NSURL URLWithString:url relativeToURL:baseUrl] absoluteURL];
         if ([[NSFileManager defaultManager] fileExistsAtPath:absoluteURL.path]) {
             NSLog(@"[pdfviewer] path: %@", absoluteURL.path);
@@ -126,6 +127,7 @@
 #else
 	NSURL* baseUrl = [self.webView.request URL];
 #endif
+		url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL* absoluteURL = [[NSURL URLWithString:url relativeToURL:baseUrl] absoluteURL];
 
         if ([[NSFileManager defaultManager] fileExistsAtPath:absoluteURL.path]) {
